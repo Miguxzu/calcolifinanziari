@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- Home - Calcolo netto -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/index.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 
   <!-- Tredicesima -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/tredicesima.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/tredicesima.html</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 
   <!-- Ferie -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/ferie.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/ferie.html</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 
   <!-- Straordinari -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/straordinari.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/straordinari.html</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 
   <!-- Pensione -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/pensione.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/pensione.html</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 
   <!-- Privacy -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/privacy.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/privacy.html</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 
   <!-- Termini di utilizzo -->
   <url>
-    <loc>https://miguxzu.github.io/calcolifinanziari/termini.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://Miguxzu.github.io/calcolifinanziari/termini.html</loc>
+    <lastmod>2025-12-20</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://miguxzu.github.io/calcolifinanziari/sitemap.xml

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolo Stipendio Netto 2025 | Da Lordo a Netto in Italia</title>
+  <meta name="description" content="Calcola online lo stipendio netto 2025 in Italia a partire dal lordo mensile. Simulatore stipendio netto con IRPEF 2025, contributi INPS, detrazioni e addizionali locali.">
+  <meta name="keywords" content="calcolo stipendio netto, stipendio netto 2025, da lordo a netto, calcolo busta paga, calcolo netto mensile, calcolo netto annuo, irpef 2025, contributi inps, calcolo stipendio Italia, calcolare stipendio netto online">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-logo">€</span>
+        <div class="brand-text">
+          <span class="brand-title">Tool Stipendio Italia</span>
+          <span class="brand-subtitle">Calcolo netto 2025</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <button class="nav-toggle" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active"> Netto</a></li>
+          <li><a href="tredicesima.html" class="nav-link">Tredicesima</a></li>
+          <li><a href="ferie.html" class="nav-link"> Ferie</a></li>
+          <li><a href="straordinari.html" class="nav-link"> Straordinari</a></li>
+          <li><a href="pensione.html" class="nav-link"> Pensione</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Calcolo stipendio netto 2025 in Italia</h1>
+        <p>
+          Inserisci il tuo stipendio lordo mensile e scopri subito lo stipendio netto mensile e annuo,
+          con calcolo di IRPEF 2025, contributi INPS, detrazioni per lavoro dipendente e addizionali regionali/comunali.
+        </p>
+        <ul class="hero-bullets">
+          <li>Da lordo a netto 2025 con tre scaglioni IRPEF</li>
+          <li>Simulazione netto mensile, annuo e incidenza tasse</li>
+          <li>Gestione tredicesima, part time e situazione familiare</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <!-- COLONNA SINISTRA: CALCOLATORE NETTO -->
+      <section class="card" aria-label="Calcolatore stipendio netto">
+        <header class="card-header">
+          <h2>Calcolatore stipendio netto online</h2>
+          <p>
+            Inserisci il lordo mensile e, se vuoi, personalizza situazione familiare e configurazione di lavoro
+            per simulare quanto prendi realmente in busta paga.
+          </p>
+        </header>
+
+        <form id="calcolo-stipendio-form" class="calculator-form" novalidate>
+          <!-- LORDO -->
+          <div class="form-block">
+            <label for="lordo" class="field-label">Stipendio lordo mensile</label>
+            <div class="field-help">
+              Indica l’importo lordo riportato in busta paga, prima di tasse e contributi, senza includere straordinari occasionali.
+            </div>
+            <div class="field-inline">
+              <input type="number" id="lordo" placeholder="Es. 2500" min="0" step="50" required>
+              <span class="field-suffix">€</span>
+            </div>
+          </div>
+
+          <!-- SITUAZIONE FAMILIARE -->
+          <fieldset class="form-block">
+            <legend class="block-title">Situazione familiare IRPEF</legend>
+            <div class="block-columns">
+              <label class="checkbox-row">
+                <input type="checkbox" id="conConiuge">
+                <span>Coniuge a carico (reddito &lt; 2.840 €)</span>
+              </label>
+
+              <div class="field-row">
+                <label for="numeroFigli">Numero totale figli a carico</label>
+                <input type="number" id="numeroFigli" min="0" value="0">
+              </div>
+
+              <div class="field-row">
+                <label for="figliSotto3Anni">Figli sotto i 3 anni</label>
+                <input type="number" id="figliSotto3Anni" min="0" value="0">
+              </div>
+
+              <div class="field-row">
+                <label for="figliDisabili">Figli con disabilità</label>
+                <input type="number" id="figliDisabili" min="0" value="0">
+              </div>
+
+              <label class="checkbox-row">
+                <input type="checkbox" id="altriCarichi">
+                <span>Altri familiari a carico (genitori, ecc.)</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- CONFIGURAZIONE LAVORO -->
+          <fieldset class="form-block">
+            <legend class="block-title">Configurazione lavoro</legend>
+            <div class="block-columns">
+              <label class="checkbox-row">
+                <input type="checkbox" id="tredicesima" checked>
+                <span>Include tredicesima (13 mensilità)</span>
+              </label>
+
+              <div class="field-row">
+                <label class="checkbox-row checkbox-inline">
+                  <input type="checkbox" id="partTime">
+                  <span>Lavoro part-time</span>
+                </label>
+                <div class="field-inline small">
+                  <input type="number" id="percentualePartTime" min="10" max="100" value="100" step="5">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <label class="checkbox-row">
+                <input type="checkbox" id="regimeForfettario">
+                <span>Regime forfettario (contributi ridotti)</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- BOTTONI -->
+          <div class="button-row">
+            <button type="button" id="calcola-stipendio-netto" class="btn primary">
+               Calcola netto
+            </button>
+            <button type="button" id="pulisci-campi" class="btn ghost">
+               Pulisci
+            </button>
+          </div>
+        </form>
+
+        <!-- RISULTATO NETTO -->
+        <article id="risultato" class="result-card" aria-live="polite">
+          <div class="result-placeholder">
+            <h3>Pronto per il calcolo stipendio netto</h3>
+            <p>
+              Inserisci il tuo lordo mensile, configura le opzioni su famiglia e lavoro e premi “Calcola”
+              per scoprire lo stipendio netto mensile e annuo in Italia nel 2025.
+            </p>
+            <ul class="result-bullets">
+              <li>Contributi INPS lavoratore: 9,19% sulla RAL (valore medio).</li>
+              <li>Addizionali: aliquote medie Lombardia 1,73% + comune 0,80%.</li>
+              <li>IRPEF 2025 con 3 scaglioni: 23%, 35%, 43% sul reddito imponibile.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- COLONNA DESTRA: DATI FISCALI / FAQ -->
+      <aside class="card card-secondary" aria-label="Dettaglio dati fiscali 2025">
+        <header class="card-header">
+          <h2>Dati fiscali usati nel calcolo netto</h2>
+          <p>
+            Qui trovi un riepilogo dei parametri e delle ipotesi utilizzate dal calcolatore stipendio netto per il 2025 in Italia.
+          </p>
+        </header>
+
+        <div class="info-grid">
+          <section class="info-card">
+            <h3>Input considerati</h3>
+            <ul>
+              <li>RAL stimata a partire dal lordo mensile e dal numero di mensilità.</li>
+              <li>Configurazione full-time o part-time (in percentuale).</li>
+              <li>Presenza o meno della tredicesima mensilità.</li>
+              <li>Sintesi della situazione familiare ai fini IRPEF.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Contributi e IRPEF</h3>
+            <ul>
+              <li>Contributi INPS lavoratore dipendente: 9,19% (media indicativa).</li>
+              <li>Regime forfettario: contributi ridotti al 5% sulla RAL (semplificazione).</li>
+              <li>Base imponibile IRPEF: RAL meno contributi INPS.</li>
+              <li>Applicazione IRPEF per scaglioni sul reddito imponibile.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Addizionali locali</h3>
+            <ul>
+              <li>Addizionale regionale (Lombardia): 1,73% sul reddito imponibile.</li>
+              <li>Addizionale comunale media: 0,80% indicativa.</li>
+              <li>Le percentuali reali variano in base al Comune e alla Regione.</li>
+              <li>Il calcolo vuole offrire un ordine di grandezza realistico.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>FAQ stipendio netto</h3>
+            <ul>
+              <li><strong>Perché il netto è diverso da quello in busta paga?</strong> Il datore di lavoro può applicare addizionali e detrazioni diverse, e possono esserci voci particolari (premi, welfare, arretrati).</li>
+              <li><strong>I figli minorenni aumentano il netto?</strong> Le detrazioni per figli sono semplificate e servono a dare solo un’indicazione: per importi precisi serve la busta paga o un CAAF.</li>
+              <li><strong>Questo calcolo è valido per tutti i contratti?</strong> È pensato per lavoratori dipendenti in Italia; non copre in dettaglio tutti i CCNL o i casi particolari.</li>
+              <li><strong>Posso usare il risultato per accordi o contestazioni?</strong> No: è uno strumento informativo. Per decisioni importanti è sempre meglio un consulente del lavoro o un commercialista.</li>
+            </ul>
+          </section>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2025 Tool Stipendio Italia. Strumento informativo.</p>
+      <p class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <span>·</span>
+        <a href="termini.html">Termini di utilizzo</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <h3 id="cookie-title">Cookie e statistiche</h3>
+        <p>
+          Questo sito utilizza cookie tecnici necessari al funzionamento e, previo tuo consenso,
+          Google Analytics per statistiche anonime e aggregate sull’utilizzo delle pagine.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn small primary" onclick="acceptCookies()">Accetta</button>
+        <button class="btn small ghost" onclick="rejectCookies()">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

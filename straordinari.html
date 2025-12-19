@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolo Straordinari 2025 | Calcola Straordinari Lordi e Netti</title>
+  <meta name="description" content="Calcola online gli straordinari 2025: straordinari lordi e netti in base alla paga oraria, alle maggiorazioni (25%, 50%, notturno/festivo) e alla tassazione.">
+  <meta name="keywords" content="calcolo straordinari, straordinari netti, straordinari lordi, maggiorazione straordinari, straordinari 25%, straordinari 50%, straordinari notturni, calcolo straordinari online, busta paga straordinari, straordinari 2025">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-logo">€</span>
+        <div class="brand-text">
+          <span class="brand-title">Tool Stipendio Italia</span>
+          <span class="brand-subtitle">Calcolo straordinari</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <button class="nav-toggle" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link"> Netto</a></li>
+          <li><a href="tredicesima.html" class="nav-link">Tredicesima</a></li>
+          <li><a href="ferie.html" class="nav-link"> Ferie</a></li>
+          <li><a href="straordinari.html" class="nav-link active"> Straordinari</a></li>
+          <li><a href="pensione.html" class="nav-link"> Pensione</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Calcolo straordinari 2025: lordi e netti</h1>
+        <p>
+          Con questo calcolatore straordinari puoi stimare quanto incassi davvero per le ore di straordinario,
+          considerando paga oraria, maggiorazioni e tassazione media.
+        </p>
+        <ul class="hero-bullets">
+          <li>Calcolo straordinari lordi per fascia (25%, 50%, notturno/festivo)</li>
+          <li>Stima straordinari netti dopo INPS e IRPEF media</li>
+          <li>Paga oraria netta di straordinario calcolata automaticamente</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <!-- COLONNA SINISTRA: CALCOLATORE -->
+      <section class="card" aria-label="Calcolatore straordinari">
+        <header class="card-header">
+          <h2>Calcolatore straordinari online</h2>
+          <p>
+            Inserisci paga oraria lorda, ore di straordinario e maggiorazioni applicate per vedere
+            il totale straordinari lordi e netti, con una stima semplice ma utile per farti un’idea.
+          </p>
+        </header>
+
+        <form id="calcolo-straordinari-form" class="calculator-form" novalidate>
+          <!-- PAGA ORARIA -->
+          <div class="form-block">
+            <label for="straordinariPagaOraria" class="field-label">Paga oraria lorda</label>
+            <div class="field-help">
+              Paga oraria lorda di riferimento, calcolata dalla tua busta paga (RAL / ore annue) o indicata dal contratto.
+            </div>
+            <div class="field-inline">
+              <input type="number" id="straordinariPagaOraria" min="0" step="0.5" placeholder="Es. 15">
+              <span class="field-suffix">€/h</span>
+            </div>
+          </div>
+
+          <!-- ORE E MAGGIORAZIONI -->
+          <fieldset class="form-block">
+            <legend class="block-title">Ore di straordinario per fascia</legend>
+            <div class="block-columns">
+              <div class="field-row">
+                <label for="oreStraordinario25">Ore straordinario feriale (+25%)</label>
+                <div class="field-inline small">
+                  <input type="number" id="oreStraordinario25" min="0" step="0.5" value="0">
+                  <span class="field-suffix">ore</span>
+                </div>
+                <div class="field-inline small">
+                  <input type="number" id="percStraordinario25" min="0" max="200" value="25" step="5">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="oreStraordinario50">Ore straordinario feriale (+50%)</label>
+                <div class="field-inline small">
+                  <input type="number" id="oreStraordinario50" min="0" step="0.5" value="0">
+                  <span class="field-suffix">ore</span>
+                </div>
+                <div class="field-inline small">
+                  <input type="number" id="percStraordinario50" min="0" max="300" value="50" step="5">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="oreStraordinarioNotturno">Ore straordinario notturno/festivo</label>
+                <div class="field-inline small">
+                  <input type="number" id="oreStraordinarioNotturno" min="0" step="0.5" value="0">
+                  <span class="field-suffix">ore</span>
+                </div>
+                <div class="field-inline small">
+                  <input type="number" id="percStraordinarioNotturno" min="0" max="400" value="80" step="5">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- REGIME E IRPEF -->
+          <fieldset class="form-block">
+            <legend class="block-title">Tassazione straordinari</legend>
+            <div class="block-columns">
+              <div class="field-row">
+                <label for="aliquotaMediaStraordinari">Aliquota IRPEF media sugli straordinari</label>
+                <div class="field-inline small">
+                  <input type="number" id="aliquotaMediaStraordinari" min="0" max="60" value="23" step="1">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <label class="checkbox-row">
+                <input type="checkbox" id="straordinariRegimeForfettario">
+                <span>Regime forfettario (contributi ridotti sugli straordinari)</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- BOTTONI -->
+          <div class="button-row">
+            <button type="button" id="calcola-straordinari" class="btn primary">
+               Calcola straordinari
+            </button>
+            <button type="button" id="pulisci-straordinari" class="btn ghost">
+               Pulisci
+            </button>
+          </div>
+        </form>
+
+        <!-- RISULTATO STRAORDINARI -->
+        <article id="risultato-straordinari" class="result-card" aria-live="polite">
+          <div class="result-placeholder">
+            <h3>Pronto per il calcolo straordinari</h3>
+            <p>
+              Inserisci la paga oraria, le ore di straordinario per fascia e l’aliquota IRPEF media
+              per stimare quanto ti resta in tasca degli straordinari lordi.
+            </p>
+            <ul class="result-bullets">
+              <li>Puoi personalizzare le maggiorazioni (25%, 50%, notturno/festivo).</li>
+              <li>Ottieni il totale straordinari lordi, contributi, IRPEF e netto.</li>
+              <li>Viene calcolata anche la paga netta media per ora di straordinario.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- COLONNA DESTRA: INFO / FAQ -->
+      <aside class="card card-secondary" aria-label="Informazioni sul calcolo straordinari">
+        <header class="card-header">
+          <h2>Come funziona il calcolo straordinari</h2>
+          <p>
+            Il calcolo straordinari parte dalla paga oraria lorda e applica le maggiorazioni e la tassazione
+            per stimare il compenso netto delle ore extra.
+          </p>
+        </header>
+
+        <div class="info-grid">
+          <section class="info-card">
+            <h3>Dati richiesti</h3>
+            <ul>
+              <li>Paga oraria lorda (da contratto o busta paga).</li>
+              <li>Ore di straordinario distinte per fascia (25%, 50%, notturno/festivo).</li>
+              <li>Percentuali di maggiorazione applicate alle varie fasce.</li>
+              <li>Aliquota IRPEF media per la tassazione degli straordinari.</li>
+              <li>Indicazione di eventuale regime forfettario/agevolato.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Logica di calcolo</h3>
+            <ul>
+              <li>Calcolo lordo per fascia: paga oraria × ore × (1 + maggiorazione).</li>
+              <li>Somma di tutte le fasce per ottenere lo straordinario lordo totale.</li>
+              <li>Calcolo contributi INPS sugli straordinari (aliquota standard o ridotta).</li>
+              <li>Applicazione aliquota IRPEF media sull’imponibile degli straordinari.</li>
+              <li>Straordinario netto = lordo − contributi − IRPEF.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Limiti della simulazione</h3>
+            <ul>
+              <li>Non considera eventuali tetti di ore straordinarie previsti dal CCNL.</li>
+              <li>Non gestisce differenze puntuali tra straordinario diurno, notturno, festivo ecc.</li>
+              <li>La tassazione reale dipende dal reddito annuo complessivo.</li>
+              <li>Il risultato è indicativo, non sostituisce il calcolo del consulente del lavoro.</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="note-card">
+          <h3>FAQ sugli straordinari</h3>
+          <ul>
+            <li><strong>Come si calcola lo straordinario?</strong> Si parte dalla paga oraria lorda e si applica una maggiorazione (es. +25%, +50%, notturno) sulle ore extra lavorate.</li>
+            <li><strong>Perché lo straordinario netto sembra “poco”?</strong> Perché su straordinari lordi si applicano contributi INPS e IRPEF: quindi la parte che arriva “in mano” è sempre inferiore al lordo.</li>
+            <li><strong>Le percentuali 25–50–80% sono uguali per tutti?</strong> No, dipendono dal contratto collettivo applicato (CCNL) e da eventuali accordi aziendali.</li>
+            <li><strong>Posso usare questo calcolo per controllare la busta paga?</strong> Puoi usarlo per un ordine di grandezza. Per verifiche formali è meglio rivolgersi a un consulente o a un sindacato.</li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2025 Tool Stipendio Italia. Strumento informativo.</p>
+      <p class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <span>·</span>
+        <a href="termini.html">Termini di utilizzo</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <h3 id="cookie-title">Cookie e statistiche</h3>
+        <p>
+          Questo sito utilizza cookie tecnici necessari al funzionamento e, previo tuo consenso,
+          Google Analytics per statistiche anonime e aggregate sull’utilizzo delle pagine.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn small primary" onclick="acceptCookies()">Accetta</button>
+        <button class="btn small ghost" onclick="rejectCookies()">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

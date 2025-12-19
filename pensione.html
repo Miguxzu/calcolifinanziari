@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolo Pensione Netta Futura | Stima Pensione Lorda e Netta</title>
+  <meta name="description" content="Stima la tua pensione futura: calcolo pensione lorda e netta in base all'età, agli anni di contributi, alla RAL media e alle aliquote contributive e fiscali.">
+  <meta name="keywords" content="calcolo pensione, pensione netta, pensione lorda, calcolo pensione futura, anni contributi, montante contributivo, coefficiente di sostituzione, calcolo pensione netta Inps, stimare pensione, pensione 2025">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-logo">€</span>
+        <div class="brand-text">
+          <span class="brand-title">Tool Stipendio Italia</span>
+          <span class="brand-subtitle">Stima pensione</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <button class="nav-toggle" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link"> Netto</a></li>
+          <li><a href="tredicesima.html" class="nav-link">Tredicesima</a></li>
+          <li><a href="ferie.html" class="nav-link"> Ferie</a></li>
+          <li><a href="straordinari.html" class="nav-link"> Straordinari</a></li>
+          <li><a href="pensione.html" class="nav-link active"> Pensione</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Calcolo pensione netta futura</h1>
+        <p>
+          Inserisci età, anni di contributi e retribuzione annua lorda media per ottenere una stima
+          della pensione lorda e della pensione netta mensile, in base a parametri semplificati.
+        </p>
+        <ul class="hero-bullets">
+          <li>Stima pensione lorda annua in base alla RAL</li>
+          <li>Calcolo pensione netta mensile su 13 mensilità</li>
+          <li>Montante contributivo approssimato da contributi e anni di lavoro</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <!-- COLONNA SINISTRA: CALCOLATORE PENSIONE -->
+      <section class="card" aria-label="Calcolatore pensione">
+        <header class="card-header">
+          <h2>Calcolatore pensione futura</h2>
+          <p>
+            Compila i campi con i dati principali della tua carriera lavorativa per stimare la pensione futura,
+            tenendo conto di anni di contributi, retribuzione media e aliquote.
+          </p>
+        </header>
+
+        <form id="calcolo-pensione-form" class="calculator-form" novalidate>
+          <!-- ETÀ E CONTRIBUTI -->
+          <fieldset class="form-block">
+            <legend class="block-title">Età e contributi</legend>
+            <div class="block-columns">
+              <div class="field-row">
+                <label for="pensioneEtaAttuale">Età attuale</label>
+                <div class="field-inline small">
+                  <input type="number" id="pensioneEtaAttuale" min="16" max="80" value="35">
+                  <span class="field-suffix">anni</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="pensioneEtaUscita">Età di uscita ipotizzata</label>
+                <div class="field-inline small">
+                  <input type="number" id="pensioneEtaUscita" min="50" max="75" value="67">
+                  <span class="field-suffix">anni</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="pensioneAnniContributiAttuali">Anni di contributi già maturati</label>
+                <div class="field-inline small">
+                  <input type="number" id="pensioneAnniContributiAttuali" min="0" max="50" value="10">
+                  <span class="field-suffix">anni</span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- REDDITO E ALIQUOTE -->
+          <fieldset class="form-block">
+            <legend class="block-title">Reddito e parametri pensione</legend>
+            <div class="block-columns">
+              <div class="field-row">
+                <label for="pensioneRetribuzioneMedia">Retribuzione annua lorda media (RAL)</label>
+                <div class="field-inline">
+                  <input type="number" id="pensioneRetribuzioneMedia" min="0" step="500" placeholder="Es. 30.000">
+                  <span class="field-suffix">€</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="pensioneAliquotaContributiva">Aliquota contributiva media</label>
+                <div class="field-inline small">
+                  <input type="number" id="pensioneAliquotaContributiva" min="10" max="40" value="33" step="1">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="pensioneCoeffSostituzione">Coefficiente di sostituzione</label>
+                <div class="field-inline small">
+                  <input type="number" id="pensioneCoeffSostituzione" min="30" max="90" value="70" step="1">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label for="pensioneAliquotaMediaIrpef">Aliquota IRPEF media in pensione</label>
+                <div class="field-inline small">
+                  <input type="number" id="pensioneAliquotaMediaIrpef" min="10" max="45" value="23" step="1">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- BOTTONI -->
+          <div class="button-row">
+            <button type="button" id="calcola-pensione" class="btn primary">
+               Calcola pensione
+            </button>
+            <button type="button" id="pulisci-pensione" class="btn ghost">
+               Pulisci
+            </button>
+          </div>
+        </form>
+
+        <!-- RISULTATO PENSIONE -->
+        <article id="risultato-pensione" class="result-card" aria-live="polite">
+          <div class="result-placeholder">
+            <h3>Pronto per la stima pensione</h3>
+            <p>
+              Inserisci età, anni di contributi e retribuzione lorda annua media per ottenere una stima
+              della pensione lorda e netta futura, su base annua e mensile.
+            </p>
+            <ul class="result-bullets">
+              <li>Montante contributivo stimato a partire da contributi e anni versati.</li>
+              <li>Pensione lorda calcolata come percentuale della retribuzione media.</li>
+              <li>Pensione netta stimata con una aliquota IRPEF media in pensione.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- COLONNA DESTRA: INFO / FAQ -->
+      <aside class="card card-secondary" aria-label="Informazioni sul calcolo pensione">
+        <header class="card-header">
+          <h2>Come viene stimata la pensione</h2>
+          <p>
+            Il calcolo pensione utilizza una logica semplificata per darti un ordine di grandezza
+            della pensione futura, senza sostituire le simulazioni ufficiali dell’INPS.
+          </p>
+        </header>
+
+        <div class="info-grid">
+          <section class="info-card">
+            <h3>Dati usati nel calcolo</h3>
+            <ul>
+              <li>Età attuale ed età di uscita ipotizzata (es. 67 anni).</li>
+              <li>Anni di contributi già maturati e anni futuri stimati.</li>
+              <li>Retribuzione annua lorda media a fine carriera.</li>
+              <li>Aliquota contributiva media (es. 33%) e coefficiente di sostituzione.</li>
+              <li>Aliquota IRPEF media prevista per la pensione.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Logica di calcolo pensione</h3>
+            <ul>
+              <li>Anni di contributi totali = anni attuali + anni futuri fino all’età di uscita.</li>
+              <li>Montante contributivo stimato: RAL × aliquota contributiva × anni di contributi.</li>
+              <li>Pensione lorda annua approssimata come percentuale (coefficiente di sostituzione) della RAL.</li>
+              <li>Pensione netta annua = pensione lorda × (1 − aliquota IRPEF media).</li>
+              <li>Pensione netta mensile calcolata su 13 mensilità.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Limiti della simulazione pensione</h3>
+            <ul>
+              <li>Non applica le regole dettagliate dei sistemi retributivo, misto e contributivo.</li>
+              <li>Non considera coefficienti di trasformazione ufficiali aggiornati per anno e età.</li>
+              <li>Non tiene conto di eventuali carriere discontinue o periodi senza contribuzione.</li>
+              <li>È uno strumento indicativo per farsi un’idea, non un calcolo ufficiale INPS.</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="note-card">
+          <h3>FAQ sul calcolo pensione</h3>
+          <ul>
+            <li><strong>Quanta pensione prenderò?</strong> Dipende da contributi versati, retribuzione, età di uscita e regole previdenziali. Questo strumento offre solo una stima semplificata.</li>
+            <li><strong>Cos’è il coefficiente di sostituzione?</strong> È la percentuale della retribuzione (RAL) che si trasforma in pensione lorda: es. 70% significa pensione lorda circa pari al 70% della RAL.</li>
+            <li><strong>Perché usi una aliquota IRPEF media?</strong> Per semplificare la stima della pensione netta senza simulare tutti gli scaglioni IRPEF anno per anno.</li>
+            <li><strong>Per simulazioni ufficiali a chi mi rivolgo?</strong> Puoi usare i servizi online INPS o rivolgerti a un patronato/CAF per un calcolo personalizzato.</li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2025 Tool Stipendio Italia. Strumento informativo.</p>
+      <p class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <span>·</span>
+        <a href="termini.html">Termini di utilizzo</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <h3 id="cookie-title">Cookie e statistiche</h3>
+        <p>
+          Questo sito utilizza cookie tecnici necessari al funzionamento e, previo tuo consenso,
+          Google Analytics per statistiche anonime e aggregate sull’utilizzo delle pagine.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn small primary" onclick="acceptCookies()">Accetta</button>
+        <button class="btn small ghost" onclick="rejectCookies()">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolo Tredicesima 2025 | Calcola Tredicesima Lorda e Netta</title>
+  <meta name="description" content="Calcola online la tredicesima 2025: tredicesima lorda e netta a partire dal lordo mensile, dai mesi maturati e dal part time. Simulatore tredicesima per lavoratori dipendenti.">
+  <meta name="keywords" content="calcolo tredicesima, tredicesima netta, tredicesima lorda, calcolo tredicesima online, tredicesima part time, tredicesima 2025, calcolare tredicesima dipendenti, mensilità aggiuntiva, busta paga tredicesima">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-logo">€</span>
+        <div class="brand-text">
+          <span class="brand-title">Tool Stipendio Italia</span>
+          <span class="brand-subtitle">Calcolo netto & tredicesima</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <button class="nav-toggle" aria-label="Apri menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link"> Netto</a></li>
+          <li><a href="tredicesima.html" class="nav-link active">Tredicesima</a></li>
+          <li><a href="ferie.html" class="nav-link"> Ferie</a></li>
+          <li><a href="straordinari.html" class="nav-link"> Straordinari</a></li>
+          <li><a href="pensione.html" class="nav-link"> Pensione</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Calcolo tredicesima 2025: mensilità lorda e netta</h1>
+        <p>
+          Con questo calcolatore tredicesima puoi stimare l’importo della tua tredicesima lorda e netta
+          partendo dal lordo mensile, dai mesi maturati e dall’eventuale part time o regime agevolato.
+        </p>
+        <ul class="hero-bullets">
+          <li>Calcolo tredicesima lorda in base ai mesi lavorati</li>
+          <li>Simulazione tredicesima netta dopo INPS e IRPEF</li>
+          <li>Supporto per part time e regime forfettario</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <!-- COLONNA SINISTRA: CALCOLATORE -->
+      <section class="card" aria-label="Calcolatore tredicesima">
+        <header class="card-header">
+          <h2>Calcolatore tredicesima online</h2>
+          <p>
+            Inserisci il lordo mensile, i mesi di tredicesima maturati e le informazioni sul tuo rapporto di lavoro
+            per ottenere una stima di tredicesima lorda e tredicesima netta.
+          </p>
+        </header>
+
+        <form id="calcolo-tredicesima-form" class="calculator-form" novalidate>
+          <!-- BLOCCO 1: LORDO E MESI -->
+          <div class="form-block">
+            <label for="tredicesimaLordoMensile" class="field-label">Lordo mensile di riferimento</label>
+            <div class="field-help">
+              Inserisci lo stipendio lordo mensile “tipico” riportato in busta paga, senza straordinari o bonus occasionali.
+            </div>
+            <div class="field-inline">
+              <input type="number" id="tredicesimaLordoMensile" min="0" step="50" placeholder="Es. 2500">
+              <span class="field-suffix">€</span>
+            </div>
+          </div>
+
+          <fieldset class="form-block">
+            <legend class="block-title">Mesi maturati di tredicesima</legend>
+            <div class="block-columns">
+              <div class="field-row">
+                <label for="tredicesimaMesiMaturati">Mesi lavorati nel periodo</label>
+                <div class="field-inline small">
+                  <input type="number" id="tredicesimaMesiMaturati" min="0" max="12" value="12">
+                  <span class="field-suffix">mesi</span>
+                </div>
+              </div>
+              <div class="field-row">
+                <label for="tredicesimaMesiTotali">Mesi totali considerati</label>
+                <div class="field-inline small">
+                  <input type="number" id="tredicesimaMesiTotali" min="1" max="12" value="12">
+                  <span class="field-suffix">mesi</span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- BLOCCO 2: CONFIGURAZIONE LAVORO -->
+          <fieldset class="form-block">
+            <legend class="block-title">Configurazione lavoro</legend>
+            <div class="block-columns">
+              <div class="field-row">
+                <label class="checkbox-row checkbox-inline">
+                  <input type="checkbox" id="tredicesimaPartTime">
+                  <span>Lavoro part-time</span>
+                </label>
+                <div class="field-inline small">
+                  <input type="number" id="tredicesimaPercentualePartTime" min="10" max="100" value="100" step="5">
+                  <span class="field-suffix">%</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <label class="checkbox-row">
+                  <input type="checkbox" id="tredicesimaRegimeForfettario">
+                  <span>Regime forfettario (contributi ridotti sulla tredicesima)</span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- BOTTONI -->
+          <div class="button-row">
+            <button type="button" id="calcola-tredicesima" class="btn primary">
+               Calcola tredicesima
+            </button>
+            <button type="button" id="pulisci-tredicesima" class="btn ghost">
+               Pulisci
+            </button>
+          </div>
+        </form>
+
+        <!-- RISULTATI TREDICESIMA -->
+        <article id="risultato-tredicesima" class="result-card" aria-live="polite">
+          <div class="result-placeholder">
+            <h3>Pronto per il calcolo tredicesima</h3>
+            <p>
+              Inserisci il lordo mensile, i mesi maturati e le informazioni sul tuo contratto di lavoro
+              per calcolare tredicesima lorda e tredicesima netta.
+            </p>
+            <ul class="result-bullets">
+              <li>La quota di tredicesima dipende da mesi maturati / mesi totali (0–12).</li>
+              <li>Part-time e regime fiscale influenzano l’importo della tredicesima lorda e netta.</li>
+              <li>Il calcolo è pensato per simulazioni rapide e confronti di massima.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- COLONNA DESTRA: INFO / SEO -->
+      <aside class="card card-secondary" aria-label="Informazioni sul calcolo tredicesima">
+        <header class="card-header">
+          <h2>Come viene calcolata la tredicesima</h2>
+          <p>
+            Il calcolo della tredicesima parte dal lordo mensile e applica proporzioni, contributi e tasse
+            per arrivare a una stima della mensilità aggiuntiva lorda e netta.
+          </p>
+        </header>
+
+        <div class="info-grid">
+          <section class="info-card">
+            <h3>Dati richiesti per il calcolo</h3>
+            <ul>
+              <li>Stipendio lordo mensile di riferimento.</li>
+              <li>Numero di mesi di tredicesima maturati (0–12).</li>
+              <li>Numero di mesi totali considerati (di solito 12).</li>
+              <li>Indicazione di full-time o part-time e relativa percentuale.</li>
+              <li>Presenza di eventuale regime forfettario / agevolato.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Logica di calcolo tredicesima</h3>
+            <ul>
+              <li>Tredicesima lorda teorica: pari a una mensilità lorda standard.</li>
+              <li>Tredicesima lorda effettiva: mensilità lorda × percentuale part-time × (mesi maturati / mesi totali).</li>
+              <li>Calcolo dei contributi INPS sulla tredicesima in base al regime indicato.</li>
+              <li>Stima dell’IRPEF sulla tredicesima con aliquota media per ottenere la tredicesima netta.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <h3>Limiti del calcolo tredicesima</h3>
+            <ul>
+              <li>Non sostituisce il calcolo ufficiale della busta paga del datore di lavoro.</li>
+              <li>Non considera eventuali regole specifiche del tuo CCNL sulla maturazione della tredicesima.</li>
+              <li>La tassazione reale dipende dal reddito annuo complessivo e dalle detrazioni personali.</li>
+              <li>Utilizza aliquote e parametri medi per semplificare la simulazione.</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="note-card">
+          <h3>FAQ sulla tredicesima</h3>
+          <ul>
+            <li><strong>Come si calcola la tredicesima?</strong> In generale la tredicesima si calcola come una mensilità lorda proporzionata ai mesi lavorati nell’anno. Qui inserisci il lordo mensile e i mesi maturati per ottenere una stima.</li>
+            <li><strong>La tredicesima è uguale allo stipendio normale?</strong> Spesso la tredicesima lorda è pari a una mensilità lorda, ma la tredicesima netta può essere diversa dal netto normale per effetto di contributi e IRPEF.</li>
+            <li><strong>Come funziona la tredicesima per part time?</strong> Per il part time, la tredicesima viene proporzionata alla percentuale di orario: meno ore lavorate, minore sarà la tredicesima lorda.</li>
+            <li><strong>La tredicesima è tassata?</strong> Sì, sulla tredicesima si applicano contributi previdenziali e IRPEF. Il calcolatore stima questi importi per mostrarti una tredicesima netta orientativa.</li>
+            <li><strong>Posso usare questo risultato come valore esatto?</strong> No: il risultato è una simulazione. Per importi esatti fai sempre riferimento alle buste paga e all’ufficio paghe o al consulente del lavoro.</li>
+          </ul>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2025 Tool Stipendio Italia. Strumento informativo.</p>
+      <p class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <span>·</span>
+        <a href="termini.html">Termini di utilizzo</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <h3 id="cookie-title">Cookie e statistiche</h3>
+        <p>
+          Questo sito utilizza cookie tecnici necessari al funzionamento e, previo tuo consenso,
+          Google Analytics per statistiche anonime e aggregate sull’utilizzo delle pagine.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn small primary" onclick="acceptCookies()">Accetta</button>
+        <button class="btn small ghost" onclick="rejectCookies()">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
